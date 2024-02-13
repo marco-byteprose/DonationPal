@@ -21,4 +21,24 @@ router.get('/campaigns', async (req, res) => {
     res.json(campaigns);
 });
 
+// Return campaign of specific id, including related donations
+router.get('/campaigns/:id', async (req, res) => {
+    const campaignId = new mongoose.Types.ObjectId(req.params.id);
+    const filter = { _id: campaignId };
+    
+    const campaign = await Campaign.aggregate([
+        // Stage 1 - filter campaign document by id
+        { $match: filter},
+
+        // Stage 2 - Left outer join to donations collection
+        { $lookup: {
+            from: "donations",
+            localField: "_id",
+            foreignField: "campaign_id",
+            as: "donations"
+        }}
+    ]);
+    res.json(campaign);
+});
+
 module.exports = router;
