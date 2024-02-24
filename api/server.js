@@ -9,10 +9,14 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 // Routers
-const apiRouter = require('./routes/api/v1');
+const apiRouter = require('./routes/api/v1/index');
+const usersRouter = require('./routes/api/v1/users');
 
 // App initialization
 const app = express();
+
+// Passport initialization
+require('config/passport');
 
 // Connect to Mongo via mongoose
 mongoose.set('strictQuery', false);
@@ -32,5 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
 app.use('/api/v1', apiRouter);
+app.use('/api/v1/users', usersRouter);
 
 module.exports = app;
