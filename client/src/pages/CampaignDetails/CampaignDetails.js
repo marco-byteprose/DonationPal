@@ -1,16 +1,17 @@
 import 'src/pages/CampaignDetails/CampaignDetails.css';
 
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import useDataFetcher from 'src/hooks/useDataFetcher';
+import { APIURLContext } from 'src/contexts/APIURLContext';
 
-function CampaignDetails( {apiURL} ) {
+function CampaignDetails() {
     const { id } = useParams();
 
     console.log(`Campaign ID: ${id}`);
     console.log(typeof id);
-    console.log('URL: ' + apiURL + '/campaigns/' + id);
 
+    const apiURL = useContext(APIURLContext);
     const [campaign, setCampaign] = useState({ donations: [] });
     const [data, loading, error] = useDataFetcher(apiURL + '/campaigns/' + id);
 

@@ -1,10 +1,12 @@
 import 'src/pages/Home/Home.css';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Campaign from 'src/components/Campaign/Campaign';
 import useDataFetcher from 'src/hooks/useDataFetcher';
+import { APIURLContext } from 'src/contexts/APIURLContext';
 
-function Home( {apiURL} ) {
+function Home() {
+    const apiURL = useContext(APIURLContext);
     const [campaigns, setCampaigns] = useState([]);
     const [data, loading, error] = useDataFetcher(apiURL + '/campaigns');
 
