@@ -8,6 +8,13 @@ router.get('/', (req, res) => {
     res.send("Root Users Route");
 });
 
+router.post('/register', passport.authenticate('register', {session: false}), async (req, res) => {
+    res.status(200).json({
+        message: 'Registration successful',
+        user: req.user
+    });
+});
+
 // .post(url path, passport middleware, success function(find user), fail function(did not find user) );
 router.post('/login', passport.authenticate('login', {session: false, failWithError: true}), 
     function (req, res) {
@@ -38,5 +45,13 @@ router.post('/login', passport.authenticate('login', {session: false, failWithEr
         return res.status(401).json(errorResponse);
     }
 );
+
+router.get('/me', passport.authenticate('jwt', {session: false}), (req, res) => {
+    // If a valid jwt is passed in the Authorization header, the middleware will add a "user" object to the request
+    // We can then use the req.user object to find the ID or email of the user sending the token
+    // From there I could query the database and respond with the entire user's profile
+    // For now I will just return the entire user object
+    res.status(200).json(req.user);
+});
 
 module.exports = router;
