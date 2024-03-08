@@ -1,20 +1,23 @@
-import 'src/components/Header/Header.css';
-import logo from 'src/images/1.png';
+import logo from 'src/images/donation-pal-contrast-logo.svg';
 
 import { Link } from 'react-router-dom';
 
 function Header() {
     return (
-        <div className="Header-wrapper">
-            <div className="img-container">
-                <img src={logo} alt="Logo of two hands holding a red heart" />
-            </div>
-            <div className="menu-container">
-                <nav>
-                    <ul>
-                        <Link to="/"><li>Home</li></Link>
-                    </ul>
-                </nav>
+        <div className="container-fluid header">
+            <div className="row">
+                <div className="col-4">
+                    <img className="logo" src={logo} alt="A hand holding a red heart with the text Donation Pal" />
+                </div>
+                <div className="col-8 align-self-center">
+                    <nav>
+                        <ul>
+                        <li><Link to='/'>Login</Link></li>
+                            <li><Link to='/profile'>Profile</Link></li>
+                            <li><Link to='/home'>Home</Link></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     )

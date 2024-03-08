@@ -42,10 +42,7 @@ export default function LoginForm() {
         let loginCredentials = {};
         loginCredentials.email = inputs.email;
         loginCredentials.password = inputs.password;
-        console.log('Login Credentials: ')
-        console.log(loginCredentials)
         const loginResponse = await loginUser(loginCredentials);
-        console.log(`Login response: ${loginResponse}`);
         if (loginResponse == null) {
             alert('That username and password is not valid!');
         } else {
@@ -57,23 +54,40 @@ export default function LoginForm() {
     return (
         // Login form goes here
         <form method="post" onSubmit={handleSubmit}>
-            <label>Enter your email address:
-                <input 
-                    type="text"
-                    value={inputs.email || ""}
-                    name="email"
-                    onChange={handleChange} 
-                />
-            </label>
-            <label>Enter your password:
-                <input
-                    type="text"
-                    value={inputs.password || ""}
-                    name="password"
-                    onChange={handleChange} 
-                />
-            </label>
-            <input type="submit" value="Log In" />
+            <div className="login-form">
+            <div className="form-group row justify-content-md-center">
+                <label htmlFor="input-email" className="col-sm-2 col-form-label">Email</label>
+                <div className="col-sm-10">
+                    <input 
+                        type="text"
+                        className="form-control"
+                        id="input-email"
+                        value={inputs.email || ""}
+                        name="email"
+                        onChange={handleChange} 
+                    />
+                </div>
+            </div>
+            <div className="form-group row justify-content-md-center">
+                <label htmlFor="input-password" className="col-sm-2 col-form-label">Password</label>
+                <div className="col-sm-10">
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="input-password"
+                        value={inputs.password || ""}
+                        name="password"
+                        onChange={handleChange} 
+                    />
+                </div>
+            </div>
+            <div className="form-group row justify-content-md-center">
+                <div className="col-sm-12">
+                    <button type="submit" className="btn btn-primary">Log In</button>
+                </div>
+            </div>
+
+            </div>
         </form>
     )
 }

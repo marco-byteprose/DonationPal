@@ -1,19 +1,14 @@
 import { Link, Outlet } from 'react-router-dom';
+import 'src/pages/PageLayout/PageLayout.css';
+import Header from 'src/components/Header/Header';
 
 export default function PageLayout() {
     return (
         <div>
-            <nav>
-                <li><Link to='/'>Login</Link></li>
-                <li><Link to='/profile'>Profile</Link></li>
-                <li><Link to='/home'>Home</Link></li>
-            </nav>
-
+            <Header />
             <Outlet />
-            <br />
-            <br />
 
-            <div>Footer</div>
         </div>
+    
     )
 }

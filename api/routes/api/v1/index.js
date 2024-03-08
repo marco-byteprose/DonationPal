@@ -6,7 +6,6 @@ require('models/Campaign');
 require('models/Donation');
 
 const Campaign = mongoose.model('campaigns');
-const Donation = mongoose.model('donations');
 
 // Root Route
 router.get('/', (req, res) => {

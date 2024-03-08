@@ -1,5 +1,4 @@
 import 'src/pages/Home/Home.css';
-
 import { useState, useEffect, useContext } from 'react';
 import Campaign from 'src/components/Campaign/Campaign';
 import useDataFetcher from 'src/hooks/useDataFetcher';
