@@ -24,7 +24,7 @@ router.post('/login', passport.authenticate('login', {session: false, failWithEr
         const payload = { id: req.user._id, email: req.user.email};
 
         // jwt.sign( payload, encryption key, set of options);
-        const token = jwt.sign( {payload}, process.env.TOP_SECRET_KEY, { expiresIn: '5m'} );
+        const token = jwt.sign( {payload}, process.env.TOP_SECRET_KEY, { expiresIn: '1d'} );
 
         loginObject = {};
         loginObject._id = req.user._id;

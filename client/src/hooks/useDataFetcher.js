@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import useToken from './useToken';
 
 function useDataFetcher(dataSource) {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const {token, setToken} = useToken();
@@ -12,9 +12,13 @@ function useDataFetcher(dataSource) {
         // Implement function which loads data from API
         const loadData = async (req, res) => {
             try {
-                const response = await axios.get(dataSource);
-                console.log(response.data);
-                setData( (dataItems) => [...response.data]);
+                const response = await axios.get(dataSource, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                // setData( (dataItems) => [...response.data]);
+                setData(response.data);
                 setLoading(false);
             } catch (err) {
                 setLoading(false);
@@ -26,7 +30,7 @@ function useDataFetcher(dataSource) {
         // Call implemented function
         setLoading(true);
         loadData();
-    }, []);
+    }, [dataSource, token]);
 
     return [data, loading, error];
 }
