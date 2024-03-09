@@ -1,5 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
-import 'src/pages/PageLayout/PageLayout.css';
+import { Outlet } from 'react-router-dom';
 import Header from 'src/components/Header/Header';
 
 export default function PageLayout() {
@@ -7,7 +6,6 @@ export default function PageLayout() {
         <div>
             <Header />
             <Outlet />
-
         </div>
     
     )

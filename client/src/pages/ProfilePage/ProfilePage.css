@@ -1,0 +1,8 @@
+.logout-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-outline-danger {
+    margin: 3px;
+}

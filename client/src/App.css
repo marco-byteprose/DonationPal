@@ -7,10 +7,7 @@
 
 .header {
   background-color: #232F5D;
-}
-
-.logo {
-  margin: 3px;
+  height: 100px;
 }
 
 nav ul {
