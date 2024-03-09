@@ -68,6 +68,32 @@ nav a:hover {
   border: #232F5D;
 }
 
+#donations {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#donations td, #donations th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#donations tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#donations tr:hover {
+  background-color: #ddd;
+}
+
+#donations th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #F2B988;
+  color: #000000;
+}
+
 @media screen and (min-width: 560px) {
   .login-form{
       max-width: 435px;

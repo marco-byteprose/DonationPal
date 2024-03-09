@@ -1,5 +1,3 @@
-import 'src/pages/CampaignDetails/CampaignDetails.css';
-
 import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import useDataFetcher from 'src/hooks/useDataFetcher';
@@ -14,12 +12,6 @@ function CampaignDetails() {
     const apiURL = useContext(APIURLContext);
     const [campaign, setCampaign] = useState({ donations: [] });
     const [data, loading, error] = useDataFetcher(apiURL + '/campaigns/' + id);
-
-    // useEffect(() => { 
-    //     console.log('Data: ' + data);
-    //     setCampaign(data);
-    //     console.log('Campaign: ' + campaign); 
-    // }, [data]);
 
     useEffect(() => {
         if (data && data.length > 0) {
@@ -38,14 +30,14 @@ function CampaignDetails() {
 
     return (
         <div>
-          <div className="campaign-details">
-            <h2>{campaign?.name}</h2>
-            <p>{campaign?.description}</p>
-            <p><b>Goal:</b> ${campaign?.goal}</p>
-            <p><b>Start Date:</b> {new Date(campaign?.start_date).toLocaleDateString()}</p>
-            <p><b>End Date:</b> {new Date(campaign?.end_date).toLocaleDateString()}</p>
+          <div className="container">
+            <h1 className="card-title">{campaign?.name}</h1>
+            <p className="card-text">{campaign?.description}</p>
+            <p className="card-text"><b>Goal:</b> ${campaign?.goal}</p>
+            <p className="card-text"><b>Start Date:</b> {new Date(campaign?.start_date).toLocaleDateString()}</p>
+            <p className="card-text"><b>End Date:</b> {new Date(campaign?.end_date).toLocaleDateString()}</p>
           </div>
-          <div className="campaign-donations">
+          <div className="container-fluid">
           <h3>Donations</h3>
             <table id="donations">
               <thead>
