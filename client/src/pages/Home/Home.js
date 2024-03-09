@@ -9,18 +9,33 @@ function Home() {
     const [campaigns, setCampaigns] = useState([]);
     const [data, loading, error] = useDataFetcher(apiURL + '/campaigns');
 
-    useEffect(() => { setCampaigns(data) }, [data]);
+    useEffect(() => { 
+        if (data) {
+            setCampaigns(data); 
+        }
+    }, [data, campaigns]);
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
+    if (error) {
+        return <p>Error: {error}</p>
+    }
+
+    // Change object to array to use .map function below
+    const campaignsArray = Object.values(campaigns);
 
     return (
         <div className="cards">
-            {campaigns.map( (campaign) => (
+            {campaignsArray?.map( (campaign) => (
                 <Campaign 
-                key={campaign.id}
-                id={campaign.id}
-                campaignId={campaign._id} 
-                campaignName={campaign.name} 
-                description={campaign.description} 
-                goal={campaign.goal}
+                key={campaign?.id}
+                id={campaign?.id}
+                campaignId={campaign?._id} 
+                campaignName={campaign?.name} 
+                description={campaign?.description} 
+                goal={campaign?.goal}
                 />
             ))}
         </div>

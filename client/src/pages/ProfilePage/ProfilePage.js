@@ -14,10 +14,7 @@ function ProfilePage() {
 
     useEffect(() => {
         if (data) {
-            console.log("Data: ");
             setUserProfile(data);
-            console.log("userProfile: ");
-            console.log(userProfile);
         }
     }, [data, userProfile]);
 
