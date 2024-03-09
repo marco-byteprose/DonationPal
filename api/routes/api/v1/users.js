@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const UserModel = require('models/User');
 
 const mongoose = require('mongoose');
+require('models/User');
+
+const User = mongoose.model('users');
 
 // Root route
 router.get('/', (req, res) => {
@@ -51,8 +53,21 @@ router.get('/me', passport.authenticate('jwt', {session: false}), async (req, re
     const userId = new mongoose.Types.ObjectId(req.user.id);
     const filter = { _id: userId };
 
-    const userProfile = await UserModel.findOne(filter);
-    res.status(200).json(userProfile);
+    const fullUser = await User.aggregate([
+        // Stage 1 - filter campaign document by id
+        { $match: filter},
+
+        // Stage 2 - Left outer join to donations collection
+        { $lookup: {
+            from: "donations",
+            localField: "_id",
+            foreignField: "user_id",
+            as: "donations"
+        }}
+    ]);
+    console.log(fullUser);
+
+    res.status(200).json(fullUser);
 });
 
 module.exports = router;

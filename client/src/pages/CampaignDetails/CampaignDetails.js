@@ -39,11 +39,11 @@ function CampaignDetails() {
     return (
         <div>
           <div className="campaign-details">
-            <h2>{campaign.name}</h2>
-            <p>{campaign.description}</p>
-            <p><b>Goal:</b> ${campaign.goal}</p>
-            <p><b>Start Date:</b> {new Date(campaign.start_date).toLocaleDateString()}</p>
-            <p><b>End Date:</b> {new Date(campaign.end_date).toLocaleDateString()}</p>
+            <h2>{campaign?.name}</h2>
+            <p>{campaign?.description}</p>
+            <p><b>Goal:</b> ${campaign?.goal}</p>
+            <p><b>Start Date:</b> {new Date(campaign?.start_date).toLocaleDateString()}</p>
+            <p><b>End Date:</b> {new Date(campaign?.end_date).toLocaleDateString()}</p>
           </div>
           <div className="campaign-donations">
           <h3>Donations</h3>
@@ -56,11 +56,11 @@ function CampaignDetails() {
                 </tr>
               </thead>
               <tbody>
-                {campaign.donations.map((donation) => (
-                  <tr key={donation._id}>
-                    <td>{new Date(donation.date).toLocaleDateString()}</td>
-                    <td>${donation.amount}</td>
-                    <td>{donation.message}</td>
+                {campaign.donations?.map((donation) => (
+                  <tr key={donation?._id}>
+                    <td>{new Date(donation?.date).toLocaleDateString()}</td>
+                    <td>${donation?.amount}</td>
+                    <td>{donation?.message}</td>
                   </tr>
                 ))}
               </tbody>

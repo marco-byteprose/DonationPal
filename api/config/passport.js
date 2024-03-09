@@ -1,8 +1,12 @@
 const passport = require('passport');
-const UserModel = require('../models/User');
+const mongoose = require('mongoose');
 const localStrategy = require('passport-local').Strategy;
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
+
+require('models/User');
+
+const User = mongoose.model('users');
 
 // Helper functions
 // NOTE: cb (callback function) expects two values: err, user
@@ -10,7 +14,7 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 // Function that will process email and password against the database
 let authenticateLogin = async (email, password, cb) => {
     // Search for User with supplied email
-    UserModel.findOne({email})
+    User.findOne({email})
     .then(async (user) => {
         // If no user, then 'null' for error value and 'false' for user value
         if (!user) {

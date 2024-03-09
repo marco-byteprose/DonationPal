@@ -10,11 +10,12 @@ function ProfilePage() {
     const apiURL = useContext(APIURLContext);
     const [data, loading, error] = useDataFetcher(apiURL + '/users/me');
 
-    const [userProfile, setUserProfile] = useState({});
+    const [userProfile, setUserProfile] = useState({ donations: [] });
 
     useEffect(() => {
-        if (data) {
-            setUserProfile(data);
+        // This conditional is required when joining collections since resulting data is an array with array[0] holding the user Object with joined data
+        if (data && data.length > 0) {
+            setUserProfile(data[0]);
         }
     }, [data, userProfile]);
 
@@ -44,6 +45,27 @@ function ProfilePage() {
             <p>My gender is: { userProfile?.gender }</p>
             <br />
             <p>My Name is: { userProfile.name?.last }</p>
+            <br />
+            <br />
+            <h3>Donations</h3>
+            <table id="donations">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userProfile.donations?.map((donation) => (
+                  <tr key={donation?._id}>
+                    <td>{new Date(donation?.date).toLocaleDateString()}</td>
+                    <td>${donation?.amount}</td>
+                    <td>{donation?.message}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
 
 
             
