@@ -40,6 +40,12 @@ function ProfilePage() {
         navigate('/');
     }
 
+    // Handler function to navigate to CampaignDetail page
+    const handleRowClick = (campaignId) => {
+        navigate(`/campaign/${campaignId}`);
+    }
+
+
     if (!token) {
         return <Navigate replace to='/' />
     }
@@ -78,7 +84,7 @@ function ProfilePage() {
                 </thead>
                 <tbody>
                     {userProfile.donations?.map((donation) => (
-                    <tr key={donation?._id}>
+                    <tr key={donation?._id} onClick={() => handleRowClick(donation?.campaign_id)} style={ {cursor: "pointer"} }>
                         <td>{new Date(donation?.date).toLocaleDateString()}</td>
                         <td>${donation?.amount}</td>
                         <td>{donation?.message}</td>
