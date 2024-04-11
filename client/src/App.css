@@ -7,55 +7,32 @@
 
 .header {
   background-color: #232F5D;
-  height: 100px;
 }
 
-nav ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-  text-align: end;
-}
-
-nav li {
-  display: inline-block;
-  padding-right: 3px;
-  margin: 3px;
-}
-
-nav a {
-	text-decoration: none;
-  font-weight: bolder;
-  font-size: larger;
-}
-
-/* default */
-nav a:link {
+.nav-link {
   color: #FFD299;
 }
 
-/* linked site has been visited */
-nav a:visited {
-  color: #FFD299;
+.nav-link:hover {
+  color:#F2F2F2;
+  text-decoration: underline;
 }
 
-/* item receiving focus, like tabbed to */
-nav a:focus {
+.nav-link:active {
   color: #F2F2F2;
 }
 
-/* rolling over with mouse */
-nav a:hover {
+.nav-link:focus {
   color: #F2F2F2;
 }
 
-.login-form {
-  border: 3px solid #232F5D;
-  border-radius: 15px;
-  height: 264px;
-  background-color: #F2F2F2;
-  margin: 3%;
-  padding: 10px;
+.login-container {
+  height: 90vh;
+}
+
+.login {
+  width: 338px;
+
 }
 
 .btn-primary {
@@ -65,7 +42,6 @@ nav a:hover {
 .btn-primary:hover {
   background-color: #FFD299;
   color: #232F5D;
-  border: #232F5D;
 }
 
 #donations {
@@ -92,13 +68,4 @@ nav a:hover {
   text-align: left;
   background-color: #F2B988;
   color: #000000;
-}
-
-@media screen and (min-width: 560px) {
-  .login-form{
-      max-width: 435px;
-      height: 188px;
-      margin: auto;
-      margin-top: 3%;
-  }
 }

@@ -8,21 +8,22 @@ const DonationSchema = new Schema({
         required: true
     },
     user_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
+        type: mongoose.Schema.Types.ObjectId
     },
     message: {
         type: String,
-        require: true,
         trim: true
     },
     amount: {
         type: Number,
-        require: true
+        required: true
     },
     date: {
         type: Date,
-        require: true
+        required: true
+    },
+    payment_id: {
+        type: String
     }
 });
 

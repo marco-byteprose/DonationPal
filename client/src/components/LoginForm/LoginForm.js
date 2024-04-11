@@ -53,41 +53,21 @@ export default function LoginForm() {
 
     return (
         // Login form goes here
-        <form method="post" onSubmit={handleSubmit}>
-            <div className="login-form">
-            <div className="form-group row justify-content-md-center">
-                <label htmlFor="input-email" className="col-sm-2 col-form-label">Email</label>
-                <div className="col-sm-10">
-                    <input 
-                        type="text"
-                        className="form-control"
-                        id="input-email"
-                        value={inputs.email || ""}
-                        name="email"
-                        onChange={handleChange} 
-                    />
-                </div>
+        <div className="container-fluid login-container d-flex justify-content-center align-items-center">
+            <div className="container login text-bg-light p-3 rounded shadow">
+                <form method="post" onSubmit={handleSubmit}>
+                    <div class="mb-3">
+                        <label for="inputEmail" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" value={inputs.email || ""} name="email" onChange={handleChange} />
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" value={inputs.password || ""} name="password" onChange={handleChange} />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
-            <div className="form-group row justify-content-md-center">
-                <label htmlFor="input-password" className="col-sm-2 col-form-label">Password</label>
-                <div className="col-sm-10">
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="input-password"
-                        value={inputs.password || ""}
-                        name="password"
-                        onChange={handleChange} 
-                    />
-                </div>
-            </div>
-            <div className="form-group row justify-content-md-center">
-                <div className="col-sm-12">
-                    <button type="submit" className="btn btn-primary">Log In</button>
-                </div>
-            </div>
-
-            </div>
-        </form>
+        </div>
     )
 }
