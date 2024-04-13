@@ -1,11 +1,11 @@
 # Full Stack Application
-A MERN stack application that contains a list of standard cocktails and provides their ingredients and preparation instructions. Great for home cooks and bartenders wanting to improve their cocktail craft. The application is deployed on Google App Engine.
+A GoFundMe clone which uses the MERN stack. It incorporates authorization/authentication and Stripe for secure donations.
 
 ## Database
-Cocktail details and ingredients are stored in a MongoDB database and retrieved from the backend API. 
+MongoDB stores three collections: Users, Campaigns, Donations.
 
 ## Backend
-The backend is an API made with Express and Node.js. 
+The backend is an API made with Express and Node.js. JWT is used to implement authentication and authorization. Stripe is implemented for payment handling.
 
 ## Frontend
 The frontend is using the React library and styled with Bootstrap.
